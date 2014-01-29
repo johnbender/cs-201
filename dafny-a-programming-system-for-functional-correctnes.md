@@ -1,91 +1,11 @@
 # Dafny: a Programming System for Functional Correctness
 
+Professor Rustan Leino presented on the programming language Dafny and how it can be used to prove properties about sensitive portions of code for which it is important to establish proven invariants.
 
-state of programming verification
+He began by discussing the state of program verification. In particular he talked about the time intensive and expensive nature of verifying code. Additionally he described his work as being focused on the development stage of the software life cycle. In general assisting the developer in capturing more of the design and specification semantics in the code is best done by automatic tooling but often requires help from the developer. His solution for heavier weight verification with is to focus on important and relatively static portions of code and libraries.
 
-- Costly (building/maintaining)
-- expense is making sure the software fits reqs
-- cycle: design - dev - test - ship - support
-- focused on dev
+He also described the continuum of verification techniques from extended static checkers to hand written proofs. On the side of static checkers are simple properties and large over approximations with minimal effort from the developer. Obviously on the other end with hand written proofs much more effort is required but the properties of code can be shown very exactly.
 
-- helping the dev
-- capture more of the design in text
-- redundancy
-- description
- - ux
- - perf
- - information flow
- - functional behavior <- focus
- - can be enforced by docs
-  - doesn't really work
+Dafny is an attempt to leverage the power of SMT constraint solvers to allow programmers to specify properties of their code for themselves and let the compiler verify that the code satisfies those properties. During the demo he showed how inductive proofs on data structures can be shown in the property specification portion of the language. He also demonstrated the difficulty of showing complex inductive properties even for a basic tree traversal algorithms which suggested that being able to prove only some of the properties was of great value.
 
-- tools are where it's at
-- verification is an ideal
-- we can focus on certain portions of the application for verification
-
-- focus on accessible program verification
-
-- hand proof
- - very hard
- - very effective
- - only works for small programs
-- interactive proof assistants
- - mechanically ensure the proof is valid
- - tools require expertise
-- extended static checking
- - basic properties like array bounds
- - easy automate
- - SMT solvers
-- Dafny
- - move the SMT to the functional correctness level
-
-- Dafny PL
- - designed from the beginning with verification in mind
- - small areas that highlight this approach
- - verifier designed WITH the language
-
-- Lang Demo
- - dafny in browser
- - datatype tree
- - generics
- - methods and function distinction
- - functions are pure
- - methods are everything else
- - attempts to prove termination of functions
-  - eg, recursing on same node in a tree
- - methods have sets? of return param
- - postcondition with `ensures`?
- - ensures are formulae
-  - eg, array index bounds
- - precondition `requires`
-  - eg, not null
- - effects (?) with `modifies`
- - specification used to augment reasoning
-
-- Proof Demo
- - mirrored tree
- - lemmas
-  - postconditions are the proved thing
-  - recursion is IH
-  - induction supported automatically
-
-- Verification arch
- - pl
- - IR lang "Boogie"
- - decision using Z3
-
-- Boogie is used for many verifiers
- - many front ends
- - many back ends
- - shared infra for front ends
-
-- At MS
- - VCC verify hyper visor
- - Corral/Poirot/HAVOC, static driver verific
- - SymDiff, semantic diff
-  - Boogie IR can be used to verify semantics in different langs
- - Dafny, ironclad, cloudmake
- -
-
-- Teaching
- - reasoning about programs/discrete math
+He concluded by siting other possible uses for Dafny such as standing in as an intermediate verification language for higher level abstract languages and also for pedagogical purposes.

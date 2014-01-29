@@ -1,5 +1,7 @@
 # Sonar Inside Your Body: Towards Implantable Ultrasonic Sensor Networks
 
+Tommaso Melodia
+
 - intrabody wireless networks and sensors
  - networks of implantable mini wireless sensing and actuating devices
  - communicate wirelessly with external devices
