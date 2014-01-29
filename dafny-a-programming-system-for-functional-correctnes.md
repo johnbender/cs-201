@@ -1,4 +1,4 @@
-# Dafny: a Programming System for Functional Correctness
+# Professor Rustan Leino, Dafny: a Programming System for Functional Correctness
 
 Professor Rustan Leino presented on the programming language Dafny and how it can be used to prove properties about sensitive portions of code for which it is important to establish proven invariants.
 
