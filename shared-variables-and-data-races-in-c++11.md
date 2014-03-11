@@ -1,0 +1,9 @@
+# Hans Boehm - Shared Variables and Data Races in C++11
+
+Hans Boehm presented on the current and future state of data races in the C++11 standard. In particular he showed a diversity of undefined behavior that arises in C++ programs when data races are present due to the lack of sequential consistency guarantees due to the optimizer.
+
+Hans began his presentation by briefly discussing threading as a model for computation on multicore processors and the history of multi-threading in the C and C++ standards. He made the case that threading with shared memory is a useful cognitive model for dealing with event streams though they are currently fairly controversial due to its error prone nature. He continued by providing a historical context for the undefined behavior that often arises as a result of optimizations that are still around from the single threaded era such as out-of-order execution. These optimizations still exist but make development in a multi-threaded environment much more difficult. In general the "story" of multithreading with shared memory is very inconsistent across platforms and even in existing standards.
+
+Mr. Boehm continued by discussing the various tools used to work with threads and shared memory. From the sequential consistency expectation of native threads to mutexes to locks many different tools are employed in controlling the nondeterminism introduced in a mutlithreaded model. None of them are sound in the presence of data races under previous or *existing* standards.
+
+He continued by describing the current C++11 standard which formalizes this "catch-fire" semantics by saying, "if there are data races, all best are off". It's clear that formalizing this behavior is better for the sake of educating developers but it appears to be a rather large gun with which to shoot ones foot. He concluded by describing features for C++ such as atomic objects.
