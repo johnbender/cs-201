@@ -1,57 +1,7 @@
 # Professor Heidi Alvarez, Open Science Data Cloud
 
-open source cloud based infrastructure
-manage / analyze large data
-service provider for cloud service provider
-6 petabytes of science based information
-prod services for NASA/NIH
-typical jobs use 1ks cores over 10 - 100tbs
-open to anyone and permission to compute the data
-heterogeneous data sets
+Professor Heidi Alvarez presented on the open data cloud project which aims to provide scientists and researchers access to both data sets and the means to run long/complex computations over them. Her talk was mainly aimed at promoting the project and demonstrating how it might be useful for the attendees.
 
-data centers and networks
-- located in chicago
-- robert grossman
-- starlight international network connect
-- 100g to starlight
-- livermore valley open campus 10g to starlight
-- 100g
+Professor Alvarez began by discussing some of the projects relevant statistics. It boasts nearly 6 petabytes of science based information and the typical job run with that or other data averages around a 1000 cores and around 10 terabytes of data. In addition they have 100 gigbit connections on semi-private backbone outside the usual internet backbone infrastructure to various campuses and research institutions around the world including UCLA from their center in Chicago, Illinois. Further the professor made light of some notable data sets including the largest cancer related database in the world and large amounts of earth science data from satellites. She also noted that they work closely with NASA and NIH on some of their data sets.
 
-tight security for the biomedical cloud / privacy
-
-current apps
-- bionimbus
-- modencode
-
-largest cancer related database in the world
-earth science data with satellite imagery
-avoid disasters
-digital humanities
-
-research only networks exist, starlight is one?
-large networks connecting every continent except africa with higher speeds
-
-current state of osdc
-- medium to large data sets for hadoop
-- elastic on demand virtual machines like ec2
-- high perf networks
-- leverages data locality to support efficient execution
-
-os arch
-- hadoop
-- open stack
-- hadoop, r, samba, nagios, oscode/chef
-- manages vm images
-
-osdc clusters
-- UDT
-- UDR
-- distributed facility connectors
-
-user services
-- virtual machines
-- usage / billing
-- share files
-- access to public data sets
-
-uses chef to automate hardware addition
+She went on to describe the particulars of the cloud's implementation. Primarily the jobs are Hadoop using open stack cloud infrastructure and opscode's chef for provisioning the servers. Other tools like R and nagios are also available for number crunching and server monitoring (respectively). Most of these details are abstracted away from the user but can be exposed down to the VM instance level where the details of charges per core hour were illustrated.
