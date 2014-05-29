@@ -1,106 +1,11 @@
 # Prof. Tyson Condie - Learning from Big Data
 
-Data is everywhere
-- easier and cheaper than ever to get
-- data grows faster than moore's law
-- hadoop is the current solution for big data (map reduce)
-- every two days we produce as much data as we have from the dawn of civ to 2003
+Professor Condie began by outlining the high level reality around big data processing currently manifest in industry. Data is now cheaper and easier to get, so much so that it far surpasses Moore's Law. Every day with produce as much data as we did from the dawn of civilization until 2003.
 
-Gold Rush
-- value in the data
-- demonstrated by google facebook
-- untapped by most orgs
-- lots of data not much used
-- data is hard to deal with
-- unstructured
-- questions are hard
+This has created something of a gold rush to extract value from the enormous amounts of available data as evidenced by companies like Google and Facebook spending vast amounts of resources in attempting to leverage the information they gather to turn a profit. Otherwise the data available to most organizations is untapped because it is generally hard to deal with. That is it comes in less than ideal formats and is often partial. Moreover the questions that most users want to answer using data are exceptionally difficult to answer with any kind of surety and the tools used to answer those questions are clunky and ill suited to general purpose data manipulation.
 
-- tools are new, map-reduce doesn't work well with ML
+Example questions that users often ask are: why us user engagement dropping? what is the difference between high tide traffic and a ddos attach? how should a given medical treatment be personalized? what ads should be shown to given user? Very generally, data is only as good as the questions that we ask and can answer with it.
 
-Turing Data into Value
-- "money"
-- why is user engagement dropping
-- ddos attack?
-- decisions like what features, personalized medical treatment
-- what ads show
-- data is only as good as the decisions we derive from it
+Tyson continued by giving a broad overview of machine learning, characterizing it as programming by example. That is, it is frequently used when programming is hard, tedious, or when the program would need to change extremely frequently to address the problem at hand. He further split machine learning into two broad classes: supervised (classification, regression and recommendation) and unsupervised (clustering, dimensionality, and topic modeling). Further there are three parts to building a model, example formation, modeling and evaluation against a test set. He went on to consider an example in email classification for spam and to describe the process as iterative.
 
-Machine learning is programming by example
-- used when programming is hard
-- used when program would need to change constantly
-- goal: take huge data and apply learned model
-- supervised: classification, regression, and recommendation (~80%)
-- unsupervised: clustering, dimensionality, topic modeling
-
-Machine learning workflow
-- 1 example formation
-- 2 modeling
-- 3 evaluation on test set
-
-Example of formation
-- email => id: bag of words
-- click log => id: label
-- often done with hadoop
-- example formation, evaluation easy in hadoop
-- modeling is hard in hadoop
-
-Learning is iterative
-- apply model
-- observe issues
-- improve model
-
-What normally happens
-- examples are put on a single machine (not scalable)
-- r / matlab
-- output goes to evaluation machines
-
-Distributed Learning
-- Hadoop doesn't support iterations
-- Hadoop only supports single pass
-- 30x slowdown compared to custom solutions
-- hacked to use map only jobs, hadoop "abused" to manage machine resources
-
-Abuse: Allreduce and friends
-- traversal up and back down the tree
-
-Abuse: Graph view
-- message passing with all other nodes
-- open source version of Pregel
-
-Many other systems:
-- graphlab, pregel
-- apache spark
-- madlib
-- VW
-- distbelief
-- hyracks
-
-Need for Unification
-- todays analytics stack
-- data batch/hadoop
-
-Build Unified Big Data Runtime
-
-Resource Manager
-- cloud resources
-- "Cloud OS"
-- nodes, etc
-- alternates: apache Yarn, apache mesos, google omega, facebook corona
-
-Hadoop v1
-- jobtracker central manager
-- task trackers for many nodes connected to jobtracker
-
-YARN (hadoop v2)
-- resource manager: broker/api for clients
-- resource pool (cpu, mem, disk)
-- blocks on app master response when query resource levels
-- Google's approach uses an optimistic approach
-
-The Challenge
-- mapping the various and varied tasks to these cloud OS systems
-- batch (map reduce) needs robustness in the face of failure of nodes, and fast networks
-- streaming load spikes, elastic resource needs
-
-REEF
-- framework that solves this for YARN at MS
+The most important part of the presentation covered the shortcomings of existing infrastructure to deal with problems that fall outside of the map-reduce model. Especially iterative machine learning algorithms that require multiple passes and are fairly inefficient. It is often the case that hadoop is used for its resource management and not it's map reduce capabilities and this forms a sort of "abuse" of the system. As a result there are many new systems that have been created by Google and other big data consumers, some of which he has worked on. His current work focuses on unifying the approaches in these various systems in to something of a "cloud OS".
